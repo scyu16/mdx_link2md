@@ -67,3 +67,7 @@ pip install git+git://github.com/scyu16/mdx_link2md.git
 
 ## Development
 More to come!
+
+## TODO
+1. Allow to run with -m flag from the command line
+2. Continuous integration for Python 2.x

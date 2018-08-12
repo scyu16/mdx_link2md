@@ -1,7 +1,16 @@
-install-test: &install-test
-  name: install dependencies and run pytest
+# Check https://circleci.com/docs/2.0/language-python/ for more details
+
+build-venv: &build-venv
+  name: create virtual env and install dependencies
   command: |
-    pip install markdown pytest
+    python -m venv venv
+    . venv/bin/activate
+    pip install -r requirements.txt
+
+run-test: &run-test
+  name: run test cases
+  command: |
+    . venv/bin/activate
     pytest tests/mdx_link2md_test.py
 
 version: 2
@@ -11,8 +20,26 @@ jobs:
       - image: circleci/python:3.7
     steps:
       - checkout
-      - run: *install-test
 
+      # Download and cache dependencies
+      - restore_cache:
+          keys:
+          - v1-dependencies-{{ checksum "requirements.txt" }}
+          # fallback to using the latest cache if no exact match is found
+          - v1-dependencies-
+
+      - run: *build-venv
+
+      - save_cache:
+          paths:
+          - ./venv
+          key: v1-dependencies-{{ checksum "requirements.txt" }}
+
+      - run: *run-test
+
+      - store_artifacts:
+          path: test-reports
+          destination: test-reports
 
 workflows:
   version: 2

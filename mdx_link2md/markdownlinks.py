@@ -9,7 +9,6 @@ All changes Copyright 2018 -2014 The Python Markdown Project
 
 License: [BSD](http://www.opensource.org/licenses/bsd-license.php)
 
-TODO: Allow to run with -m flag from the command line
 """
 
 from __future__ import absolute_import

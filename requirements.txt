@@ -1,0 +1,2 @@
+markdown>=2.6.11
+pytest>=3.7.1
