@@ -1,0 +1,22 @@
+install-test: &install-test
+  name: install dependencies and run pytest
+  command: |
+    pip install markdown pytest
+    pytest tests/mdx_link2md_test.py
+
+version: 2
+jobs:
+  run-tests-37-j:
+    docker:
+      - image: circleci/python:3.7
+    steps:
+      - checkout
+      - run: *install-test
+
+
+workflows:
+  version: 2
+
+  run-tests-37:
+    jobs:
+      - run-tests-37-j

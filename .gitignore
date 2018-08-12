@@ -1,0 +1,16 @@
+.*.swp
+/bin/
+/build/
+/.coverage
+/dist/
+*.egg
+*.egg-info/
+/lib/
+*.py[cow]
+/share/
+/.Python
+/pip-selfcheck.json
+.idea/
+__pycache__/
+.pytest_cache/
+.python-version
