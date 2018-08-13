@@ -69,8 +69,11 @@ pip install git+git://github.com/scyu16/mdx_link2md.git
 ```
 
 ## Development
-More to come!
+
+`develop` branch has the latest stable code base. Please create branches off `develop` 
+branch for any changes or enhancement.
+
 
 ## TODO
 1. Allow to run with -m flag from the command line
-2. Continuous integration for Python 2.x
+2. Make it work for links in other forms
