@@ -1,13 +1,23 @@
 # Check https://circleci.com/docs/2.0/language-python/ for more details
 
-build-venv: &build-venv
-  name: create virtual env and install dependencies
+build-env-py2: &build-env-py2
+  name: create virtual env and install dependencies for Python 2
+  command: |
+    pip install --user -r requirements/python2.txt
+
+run-test-py2: &run-test-py2
+  name: run test cases
+  command: |
+    pytest tests/mdx_link2md_test.py
+
+build-venv-py3: &build-venv-py3
+  name: create virtual env and install dependencies for Python 3
   command: |
     python -m venv venv
     . venv/bin/activate
-    pip install -r requirements.txt
+    pip install -r requirements/python3.txt
 
-run-test: &run-test
+run-test-py3: &run-test-py3
   name: run test cases
   command: |
     . venv/bin/activate
@@ -15,6 +25,32 @@ run-test: &run-test
 
 version: 2
 jobs:
+  run-tests-27-j:
+    docker:
+    - image: circleci/python:2.7
+    steps:
+    - checkout
+
+    # Download and cache dependencies
+    - restore_cache:
+        keys:
+        - v2-dependencies-{{ checksum "requirements/python2.txt" }}
+        # fallback to using the latest cache if no exact match is found
+        - v2-dependencies-
+
+    - run: *build-env-py2
+
+    - save_cache:
+        paths:
+        - ./
+        key: v2-dependencies-{{ checksum "requirements/python2.txt" }}
+
+    - run: *run-test-py2
+
+    - store_artifacts:
+        path: test-reports
+        destination: test-reports
+
   run-tests-37-j:
     docker:
       - image: circleci/python:3.7
@@ -24,18 +60,18 @@ jobs:
       # Download and cache dependencies
       - restore_cache:
           keys:
-          - v1-dependencies-{{ checksum "requirements.txt" }}
+          - v1-dependencies-{{ checksum "requirements/python3.txt" }}
           # fallback to using the latest cache if no exact match is found
           - v1-dependencies-
 
-      - run: *build-venv
+      - run: *build-venv-py3
 
       - save_cache:
           paths:
           - ./venv
-          key: v1-dependencies-{{ checksum "requirements.txt" }}
+          key: v1-dependencies-{{ checksum "requirements/python3.txt" }}
 
-      - run: *run-test
+      - run: *run-test-py3
 
       - store_artifacts:
           path: test-reports
@@ -43,6 +79,10 @@ jobs:
 
 workflows:
   version: 2
+
+  run-tests-27:
+    jobs:
+      - run-tests-27-j
 
   run-tests-37:
     jobs:

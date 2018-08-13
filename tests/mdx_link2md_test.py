@@ -5,7 +5,7 @@ import markdown
 
 try:
     from mdx_link2md.markdownlinks import MarkdownLinkExtension
-except ModuleNotFoundError:
+except ImportError:
     import sys
     import os
 
@@ -13,7 +13,7 @@ except ModuleNotFoundError:
     sys.path.append(os.path.dirname(curr_dir_path))
     try:
         from mdx_link2md.markdownlinks import MarkdownLinkExtension
-    except ModuleNotFoundError as e:
+    except ImportError as e:
         sys.exit(e)
 
 
