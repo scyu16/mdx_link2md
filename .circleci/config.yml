@@ -8,6 +8,7 @@ build-env-py2: &build-env-py2
 run-test-py2: &run-test-py2
   name: run test cases
   command: |
+    export PATH=$PATH:$HOME/.local/bin
     pytest tests/mdx_link2md_test.py
 
 build-venv-py3: &build-venv-py3
