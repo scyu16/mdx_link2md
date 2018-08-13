@@ -1,6 +1,9 @@
 # Mdx Link2MD: Convert markdown to HTML in batch
 
 [![PyPI](https://img.shields.io/pypi/v/mdx_link2md.svg)](https://pypi.org/project/mdx-link2md/)
+[![PyPI](https://img.shields.io/pypi/pyversions/mdx_link2md.svg)](https://pypi.org/project/mdx-link2md/)
+[![CircleCI](https://img.shields.io/circleci/project/github/scyu16/mdx_link2md/develop.svg)](https://circleci.com/gh/scyu16/mdx_link2md)
+[![MIT License](http://img.shields.io/badge/license-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 This extension for [Python Markdown](https://github.com/waylan/Python-Markdown)
 changes `md` extension in the markdown links to `html` before links in the text 
