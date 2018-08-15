@@ -77,4 +77,3 @@ branch for any changes or enhancement.
 ## TODO
 1. Allow to run with -m flag from the command line
 2. Make it work for links in other forms
-3. Master branch to release to PyPi
