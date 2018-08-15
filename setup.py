@@ -5,7 +5,7 @@ with open('README.md', 'r') as fh:
 
 setuptools.setup(
     name='mdx_link2md',
-    version='0.0.1',
+    version='0.0.2',
     author='scyu16',
     author_email='devmaily@yandex.com',
     url='https://github.com/scyu16/mdx_link2md',
@@ -21,7 +21,9 @@ setuptools.setup(
     classifiers=(
                   'Topic :: Text Processing :: Markup',
                   'Topic :: Utilities',
+                  'Programming Language :: Python :: 2.7',
                   'Programming Language :: Python :: 3.6',
+                  'Programming Language :: Python :: 3.7',
                   'Programming Language :: Python :: Implementation :: PyPy',
                   'License :: OSI Approved :: MIT License',
     ),
