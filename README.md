@@ -58,21 +58,36 @@ When `ignore_url` is `False`, markdown links to none local files are also update
 The project is [on PyPI](https://pypi.org/project/mdx-link2md/)!
 
 ```bash
-pip install mdx_link2md
+$ pip install mdx_link2md
 ```
 
 If you want the latest version, which might include unreleased-to-PyPI code,
-you can always grab the master branch directly from Git.
+you can always grab the `develop` branch directly from Git.
 
 ```bash
-pip install git+git://github.com/scyu16/mdx_link2md.git
+$ pip install git+git://github.com/scyu16/mdx_link2md.git
 ```
 
 ## Development
 
-`develop` branch has the latest stable code base. Please create branches off `develop` 
-branch for any changes or enhancement.
+`develop` branch holds the latest stable code. Please create branches off `develop`
+branch for any changes or enhancement. It's suggested you first create a virtual
+environment and activate it, then:
 
+```bash
+$ git clone git@github.com:scyu16/mdx_link2md.git
+```
+. For Python 2.x,
+```bash
+$ pip install -r requirements/python2.txt
+```
+, while for Python 3.x,
+```bash
+$ pip install -r requirements/python3.txt
+```
+
+With this being done, `import mdx_link2md` would pick up any local changes made to
+the package.
 
 ## TODO
 1. Allow to run with -m flag from the command line
