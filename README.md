@@ -26,7 +26,7 @@ interest.
 
 ## Installation
 
-The project is [on PyPI](https://pypi.org/project/mdx-link2md/)!
+The project is on [PyPI](https://pypi.org/project/mdx-link2md/)!
 
 ```bash
 $ pip install mdx_link2md
@@ -49,7 +49,7 @@ $ python -m mdx_link2md <files_to_be_converted>
 The converted files are placed in the same directory as the source files with the same
 names of `html` extension.
 
-### As An Module
+### As A Module
 If more flexibility is desired, the package could be used as a `Python` module.
 
 ```python
