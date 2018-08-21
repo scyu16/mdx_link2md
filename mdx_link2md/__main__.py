@@ -1,34 +1,20 @@
-#!/usr/bin/env python
-
 import argparse
 import markdown
 
-try:
-    from mdx_link2md.markdownlinks import MarkdownLinkExtension
-except ImportError:
-    import sys
-    import os
-
-    curr_dir_path = os.path.dirname(os.path.abspath(__file__))
-    sys.path.append(os.path.dirname(curr_dir_path))
-    try:
-        from mdx_link2md.markdownlinks import MarkdownLinkExtension
-    except ImportError as e:
-        sys.exit(e)
+from mdx_link2md.markdownlinks import MarkdownLinkExtension
 
 
 def main():
     """
-    A sample script that converts markdown files to HTML files with internal links to
-    local markdown files changed to corresponding HTML files with the same names.
-
+    A utility script that converts markdown files to HTML files, with the internal links
+    to local markdown files changed to corresponding HTML files with the same names.
     """
 
     md = markdown.Markdown(output_format='html5',
                            extensions=[MarkdownLinkExtension(ignore_url=True)])
     parser = argparse.ArgumentParser(
         description='Convert .md files to HTML with the converted files saved at the '
-                    'same location as the original .md files with .html extension.')
+                    'same location as the original markdown files with html extension.')
     parser.add_argument(dest='target_files', nargs='+', help='files to be processed')
 
     args = parser.parse_args()
