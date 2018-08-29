@@ -5,7 +5,7 @@ with open('README.md', 'r') as fh:
 
 setuptools.setup(
     name='mdx_link2md',
-    version='0.0.1',
+    version='0.0.2',
     author='scyu16',
     author_email='devmaily@yandex.com',
     url='https://github.com/scyu16/mdx_link2md',
